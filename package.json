@@ -15,7 +15,8 @@
     "react-native": "0.73.5",
     "@shopify/react-native-skia": "0.1.221",
     "react-native-reanimated": "~3.6.2",
-    "react-native-gesture-handler": "~2.14.0"
+    "react-native-gesture-handler": "~2.14.0",
+    "expo-updates": "~0.24.12"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0"
