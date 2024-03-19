@@ -11,7 +11,8 @@ const GameScreen = () => {
   const witch = useImage(require("../assets/witch.png"));
   const lilypad = useImage(require("../assets/lilypad.png"));
   const lilypad2 = useImage(require("../assets/lilypad2.png"));
-  const x =  useSharedValue(width-50);
+  const x =  useSharedValue(width);
+  const x2 =  useSharedValue(width+200);
   const witchY = useSharedValue(height/2);
   const witchYVelocity = useSharedValue(100);
   const witchTransform = useDerivedValue(() => {
@@ -30,7 +31,17 @@ useEffect(() => { x.value =
   withRepeat(
   withSequence(
   // go to the left of the screen
-  withTiming(-150, {duration:4000, easing: Easing.linear}),
+  withTiming(-250, {duration:5000, easing: Easing.linear}),
+  // start back at the right
+  withTiming(width, {duration:0 }),
+  ), 
+  //repeats indefinitely with -1 
+  0); 
+  x2.value = 
+  withRepeat(
+  withSequence(
+  // go to the left of the screen
+  withTiming(-50, {duration:5000, easing: Easing.linear}),
   // start back at the right
   withTiming(width, {duration:0 }),
   ), 
@@ -40,15 +51,29 @@ useEffect(() => { x.value =
 }, []);
 
 useAnimatedReaction(
+    () => witchY.value, 
+     (currentValue, previousValue) => {
+      const xValue = x.value;
+    if (currentValue != previousValue && 
+      previousValue && 
+      // check second first lily pad collision
+      witchY.value >= (height - 370) &&
+      witchY.value <= (height - 270) &&
+      xValue <= 108 &&
+      xValue >= 100){
+      runOnJS(setScore)(score + 1);
+    }
+  }
+  );
+useAnimatedReaction(
   () => witchY.value, 
    (currentValue, previousValue) => {
-    const xValue = x.value;
+    const xValue = x2.value;
   if (currentValue != previousValue && 
     previousValue && 
     // check second lily pad collision
     witchY.value >= (height - 270) &&
     witchY.value <= (height - 170) &&
-    // check first lily pad collision
     xValue <= 108 &&
     xValue >= 100){
     runOnJS(setScore)(score + 1);
@@ -67,7 +92,7 @@ const gesture = Gesture.Tap().onStart(()=>{
     >
       <Image image={bg} width={width} height={height} fit={'cover'}/>
       <Image image={lilypad} width={50} height={50} x={x} y={height-320}/>
-      <Image image={lilypad2} width={50} height={50} x={x} y={height-220}/>
+      <Image image={lilypad2} width={50} height={50} x={x2} y={height-220}/>
       <Group transform={witchTransform} origin={witchOrigin} >
       <Image image={witch} width={111} height={114} x={width/4} y={witchY}/>
       </Group>
