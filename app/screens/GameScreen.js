@@ -1,12 +1,19 @@
 import { useEffect, useState } from "react";
-import { Canvas, useImage, Image, Group, Text} from "@shopify/react-native-skia";
-import { useWindowDimensions} from "react-native";
+import { Canvas, useImage, Image, Group, Text, matchFont} from "@shopify/react-native-skia";
+import { useWindowDimensions, Platform} from "react-native";
 import {useSharedValue, runOnJS, useAnimatedReaction, withTiming, Easing, withSequence, withRepeat, useFrameCallback, useDerivedValue} from 'react-native-reanimated';
 import { GestureHandlerRootView, GestureDetector, Gesture } from 'react-native-gesture-handler';
- 
+
 const GameScreen = () => {
  const { width, height } = useWindowDimensions();
  const [score, setScore] = useState(0);
+ const fontFamily = Platform.select({ ios: "American Typewriter", default: "serif" });
+ const fontStyle = {
+   fontFamily,
+   fontSize: 26,
+   fontWeight: "bold",
+ };
+  const font = matchFont(fontStyle);
   const bg = useImage(require("../assets/forest-background.png"));
   const witch = useImage(require("../assets/witch.png"));
   const lilypad = useImage(require("../assets/lilypad.png"));
@@ -35,7 +42,7 @@ useEffect(() => { x.value =
   // start back at the right
   withTiming(width, {duration:0 }),
   ), 
-  //repeats indefinitely with -1 
+  //repeats indefinitely with 0 
   0); 
   x2.value = 
   withRepeat(
@@ -45,10 +52,26 @@ useEffect(() => { x.value =
   // start back at the right
   withTiming(width, {duration:0 }),
   ), 
-  //repeats indefinitely with -1 
+  //repeats indefinitely with 0 
   0); 
  
 }, []);
+
+useAnimatedReaction(
+    () => witchY.value, 
+     (currentValue, previousValue) => {
+      const xValue = x2.value;
+    if (currentValue != previousValue && 
+      previousValue && 
+      // check first lily pad collision
+      witchY.value >= (height - 270) &&
+      witchY.value <= (height - 170) &&
+      xValue <= 108 &&
+      xValue >= 100){
+      runOnJS(setScore)(score + 1);
+    }
+  }
+  );
 
 useAnimatedReaction(
     () => witchY.value, 
@@ -65,21 +88,8 @@ useAnimatedReaction(
     }
   }
   );
-useAnimatedReaction(
-  () => witchY.value, 
-   (currentValue, previousValue) => {
-    const xValue = x2.value;
-  if (currentValue != previousValue && 
-    previousValue && 
-    // check second lily pad collision
-    witchY.value >= (height - 270) &&
-    witchY.value <= (height - 170) &&
-    xValue <= 108 &&
-    xValue >= 100){
-    runOnJS(setScore)(score + 1);
-  }
-}
-);
+
+
 
 const gesture = Gesture.Tap().onStart(()=>{
   (witchYVelocity.value *= -1);
@@ -96,11 +106,12 @@ const gesture = Gesture.Tap().onStart(()=>{
       <Group transform={witchTransform} origin={witchOrigin} >
       <Image image={witch} width={111} height={114} x={width/4} y={witchY}/>
       </Group>
-      <Text x={100} y={100} fontSize={50} fill={'#000'} text={score.toString()}></Text>
+      <Text color={"#88B6F2"} x={50} y={100} text={`Score:${score.toString()}`} font={font}></Text>
     </Canvas>
     </GestureDetector>
     </GestureHandlerRootView>
   );
 };
  
+
 export default GameScreen;
