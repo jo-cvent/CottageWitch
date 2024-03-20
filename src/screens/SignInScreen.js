@@ -1,35 +1,32 @@
-import {
-  View,
-  Text,
-  Image,
-  StyleSheet,
-  useWindowDimensions,
-} from "react-native";
+import { View, Image, StyleSheet } from "react-native";
 import { useState } from "react";
 import CustomInput from "../components/CustomInput";
-import colors from "../config/colors";
 import CustomButton from "../components/CustomButton";
+import { useNavigation } from "@react-navigation/native";
 
 export default function SignInScreen() {
-  const { height } = useWindowDimensions();
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const icon = require("../assets/google-icon.png");
-
+  const navigation = useNavigation();
   const onSignInPressed = () => {
     console.log("Sign in pressed");
+    // validate user
+    navigation.navigate("Home");
   };
 
   const onSignInWithGoogle = () => {
     console.log("Sign in google pressed");
+    // validate user
+    navigation.navigate("Home");
   };
 
   const onForgotPassword = () => {
-    console.log("Forgot password");
+    navigation.navigate("ForgotPassword");
   };
 
   const onSignup = () => {
-    console.log("signup");
+    navigation.navigate("SignUp");
   };
 
   return (

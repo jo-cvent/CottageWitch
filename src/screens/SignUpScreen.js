@@ -9,6 +9,7 @@ import { useState } from "react";
 import CustomInput from "../components/CustomInput";
 import colors from "../config/colors";
 import CustomButton from "../components/CustomButton";
+import { useNavigation } from "@react-navigation/native";
 
 export default function SignUpScreen() {
   const { height } = useWindowDimensions();
@@ -17,6 +18,7 @@ export default function SignUpScreen() {
   const [confirmation, setPasswordConfirmation] = useState("");
   const [email, setEmail] = useState("");
   const icon = require("../assets/google-icon.png");
+  const navigate = useNavigation();
 
   const onSignUpPressed = () => {
     console.log("Sign Up pressed");
@@ -27,7 +29,7 @@ export default function SignUpScreen() {
   };
 
   const onSignIn = () => {
-    console.log("signin");
+    navigate.navigate("SignIn");
   };
 
   return (

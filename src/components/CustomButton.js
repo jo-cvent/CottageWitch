@@ -38,6 +38,18 @@ const styles = StyleSheet.create({
     paddingVertical: 10,
     marginVertical: 5,
   },
+  container_tertiary: {
+    width: "100%",
+    alignItems: "center",
+    fontFamily: "American Typewriter",
+    borderRadius: 5,
+    borderWidth: 1,
+    borderColor: colors.primary,
+    paddingHorizontal: 10,
+    paddingVertical: 10,
+    marginVertical: 5,
+    backgroundColor: colors.secondary,
+  },
   text_primary: {
     fontSize: 15,
     fontFamily: "American Typewriter",
@@ -46,5 +58,11 @@ const styles = StyleSheet.create({
   text_secondary: {
     fontSize: 13,
     fontFamily: "American Typewriter",
+  },
+  text_tertiary: {
+    fontSize: 15,
+    color: colors.quinary,
+    fontFamily: "American Typewriter",
+    fontWeight: "bold",
   },
 });
