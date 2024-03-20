@@ -14,9 +14,24 @@ export default function SignInScreen() {
   const { height } = useWindowDimensions();
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const icon = require("../assets/google-icon.png");
+
   const onSignInPressed = () => {
     console.log("Sign in pressed");
   };
+
+  const onSignInWithGoogle = () => {
+    console.log("Sign in google pressed");
+  };
+
+  const onForgotPassword = () => {
+    console.log("Forgot password");
+  };
+
+  const onSignup = () => {
+    console.log("signup");
+  };
+
   return (
     <View style={styles.root}>
       <Image
@@ -35,7 +50,27 @@ export default function SignInScreen() {
           setValue={setPassword}
           secureTextEntry
         />
-        <CustomButton text={"Sign In"} onPress={onSignInPressed} />
+        <CustomButton
+          text={"Sign In"}
+          onPress={onSignInPressed}
+          type={"primary"}
+        />
+        <CustomButton
+          text={" Sign In With Google"}
+          icon={icon}
+          onPress={onSignInWithGoogle}
+          type={"primary"}
+        />
+        <CustomButton
+          text={"Forgot Password?"}
+          onPress={onForgotPassword}
+          type={"secondary"}
+        />
+        <CustomButton
+          text={"Don't have an account? Sign up!"}
+          onPress={onSignup}
+          type={"secondary"}
+        />
       </View>
     </View>
   );
@@ -44,18 +79,18 @@ export default function SignInScreen() {
 const styles = StyleSheet.create({
   root: {
     alignItems: "center",
-    justifyContent: "center",
-    padding: 20,
+    justifyContent: "space-between",
   },
   logo: {
     width: "40%",
     maxWidth: 300,
     maxHeight: 200,
     position: "absolute",
+    marginTop: 100,
   },
   container: {
-    paddingTop: 350,
     width: "80%",
     alignItems: "center",
+    marginTop: 350,
   },
 });
