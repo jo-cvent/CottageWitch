@@ -1,20 +1,14 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
-import GameScreen from './app/screens/GameScreen';
+
+import { Text, SafeAreaView, View } from 'react-native';
+import GameScreen from './src/screens/GameScreen';
+import SignInScreen from './src/screens/SignInScreen';
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <GameScreen/>
+    <View >
+      {/* <GameScreen/> */}
+        <SignInScreen/>
     </View>
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});

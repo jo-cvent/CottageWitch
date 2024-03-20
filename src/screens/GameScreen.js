@@ -3,6 +3,7 @@ import { Canvas, useImage, Image, Group, Text, matchFont} from "@shopify/react-n
 import { useWindowDimensions, Platform} from "react-native";
 import {useSharedValue, runOnJS, useAnimatedReaction, withTiming, Easing, withSequence, withRepeat, useFrameCallback, useDerivedValue} from 'react-native-reanimated';
 import { GestureHandlerRootView, GestureDetector, Gesture } from 'react-native-gesture-handler';
+import colors from "../config/colors.js";
 
 const GameScreen = () => {
  const { width, height } = useWindowDimensions();
@@ -106,7 +107,7 @@ const gesture = Gesture.Tap().onStart(()=>{
       <Group transform={witchTransform} origin={witchOrigin} >
       <Image image={witch} width={111} height={114} x={width/4} y={witchY}/>
       </Group>
-      <Text color={"#88B6F2"} x={50} y={100} text={`Score:${score.toString()}`} font={font}></Text>
+      <Text color={colors.secondary} x={50} y={100} text={`Score:${score.toString()}`} font={font}></Text>
     </Canvas>
     </GestureDetector>
     </GestureHandlerRootView>
