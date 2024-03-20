@@ -14,6 +14,9 @@ export default function SignInScreen() {
   const { height } = useWindowDimensions();
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const onSignInPressed = () => {
+    console.log("Sign in pressed");
+  };
   return (
     <View style={styles.root}>
       <Image
@@ -21,7 +24,6 @@ export default function SignInScreen() {
         style={styles.logo}
       />
       <View style={styles.container}>
-        <Text style={styles.text}>Sign In</Text>
         <CustomInput
           placeholder="username"
           value={username}
@@ -33,7 +35,7 @@ export default function SignInScreen() {
           setValue={setPassword}
           secureTextEntry
         />
-        <CustomButton />
+        <CustomButton text={"Sign In"} onPress={onSignInPressed} />
       </View>
     </View>
   );
@@ -43,9 +45,7 @@ const styles = StyleSheet.create({
   root: {
     alignItems: "center",
     justifyContent: "center",
-    display: "flex",
-    padding: 30,
-    paddingTop: 100,
+    padding: 20,
   },
   logo: {
     width: "40%",
@@ -54,18 +54,8 @@ const styles = StyleSheet.create({
     position: "absolute",
   },
   container: {
-    marginTop: 150,
-    marginBottom: 50,
+    paddingTop: 350,
     width: "80%",
-    height: 50,
     alignItems: "center",
-  },
-  text: {
-    fontSize: 35,
-    fontFamily: "American Typewriter",
-    fontWeight: "bold",
-    color: colors.secondary,
-    padding: 50,
-    marginTop: 15,
   },
 });
