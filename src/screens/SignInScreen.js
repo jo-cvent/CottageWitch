@@ -5,11 +5,15 @@ import {
   StyleSheet,
   useWindowDimensions,
 } from "react-native";
+import { useState } from "react";
 import CustomInput from "../components/CustomInput";
 import colors from "../config/colors";
+import CustomButton from "../components/CustomButton";
 
 export default function SignInScreen() {
   const { height } = useWindowDimensions();
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
   return (
     <View style={styles.root}>
       <Image
@@ -18,8 +22,19 @@ export default function SignInScreen() {
       />
       <View style={styles.container}>
         <Text style={styles.text}>Sign In</Text>
+        <CustomInput
+          placeholder="username"
+          value={username}
+          setValue={setUsername}
+        />
+        <CustomInput
+          placeholder="password"
+          value={password}
+          setValue={setPassword}
+          secureTextEntry
+        />
+        <CustomButton />
       </View>
-      <CustomInput />
     </View>
   );
 }
@@ -33,22 +48,24 @@ const styles = StyleSheet.create({
     paddingTop: 100,
   },
   logo: {
-    width: "50%",
+    width: "40%",
     maxWidth: 300,
     maxHeight: 200,
     position: "absolute",
   },
   container: {
-    marginTop: 200,
+    marginTop: 150,
     marginBottom: 50,
+    width: "80%",
     height: 50,
     alignItems: "center",
   },
   text: {
-    fontSize: 30,
+    fontSize: 35,
     fontFamily: "American Typewriter",
     fontWeight: "bold",
-    color: colors.primary,
+    color: colors.secondary,
     padding: 50,
+    marginTop: 15,
   },
 });

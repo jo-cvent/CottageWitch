@@ -1,10 +1,16 @@
 import { View, TextInput, StyleSheet } from "react-native";
 import colors from "../config/colors";
 
-const CustomInput = () => {
+const CustomInput = ({ value, setValue, placeholder, secureTextEntry }) => {
   return (
     <View style={styles.container}>
-      <TextInput placeholder="Username" fontFamily="American Typewriter" />
+      <TextInput
+        value={value}
+        placeholder={placeholder}
+        onChange={setValue}
+        secureTextEntry={secureTextEntry}
+        fontFamily="American Typewriter"
+      />
     </View>
   );
 };
@@ -18,6 +24,7 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     paddingHorizontal: 10,
     paddingVertical: 5,
+    marginVertical: 5,
   },
   input: {},
 });
