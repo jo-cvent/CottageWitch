@@ -38,8 +38,7 @@ export default function SignInScreen() {
       <View style={styles.container}>
         <CustomInput
           placeholder="username"
-          value={username}
-          setValue={setUsername}
+          onChangeText={(text) => setUsername(text)}
         />
         <CustomInput
           placeholder="password"

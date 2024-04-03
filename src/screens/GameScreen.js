@@ -8,6 +8,7 @@ import {
   useFont,
 } from "@shopify/react-native-skia";
 import { useWindowDimensions, Platform } from "react-native";
+import CustomButton from "../components/CustomButton.js";
 import {
   useSharedValue,
   runOnJS,
@@ -25,8 +26,10 @@ import {
   Gesture,
 } from "react-native-gesture-handler";
 import colors from "../config/colors.js";
+import { useNavigation } from "@react-navigation/native";
 
 const GameScreen = () => {
+  const navigation = useNavigation();
   const { width, height } = useWindowDimensions();
   const [score, setScore] = useState(0);
   const font = useFont(
@@ -47,7 +50,9 @@ const GameScreen = () => {
   const witchOrigin = useDerivedValue(() => {
     return { x: width / 4 + 32, y: witchY.value + 24 };
   });
-
+  const onHomePressed = () => {
+    navigation.navigate("Home");
+  };
   // called on every frame render
   useFrameCallback(({ timeSincePreviousFrame: dt }) => {
     if (!dt) {
@@ -120,43 +125,50 @@ const GameScreen = () => {
   });
 
   return (
-    <GestureHandlerRootView style={{ flex: 1 }}>
-      <GestureDetector gesture={gesture}>
-        <Canvas style={{ width, height }}>
-          <Image image={bg} width={width} height={height} fit={"cover"} />
-          <Image
-            image={lilypad}
-            width={50}
-            height={50}
-            x={x}
-            y={height - 320}
-          />
-          <Image
-            image={lilypad2}
-            width={50}
-            height={50}
-            x={x2}
-            y={height - 220}
-          />
-          <Group transform={witchTransform} origin={witchOrigin}>
+    <>
+      <GestureHandlerRootView style={{ flex: 1 }}>
+        <GestureDetector gesture={gesture}>
+          <Canvas style={{ width, height }}>
+            <Image image={bg} width={width} height={height} fit={"cover"} />
             <Image
-              image={witch}
-              width={111}
-              height={114}
-              x={width / 4}
-              y={witchY}
+              image={lilypad}
+              width={50}
+              height={50}
+              x={x}
+              y={height - 320}
             />
-          </Group>
-          <Text
-            color={colors.secondary}
-            x={50}
-            y={100}
-            text={`Score:${score.toString()}`}
-            font={font}
-          ></Text>
-        </Canvas>
-      </GestureDetector>
-    </GestureHandlerRootView>
+            <Image
+              image={lilypad2}
+              width={50}
+              height={50}
+              x={x2}
+              y={height - 220}
+            />
+            <Group transform={witchTransform} origin={witchOrigin}>
+              <Image
+                image={witch}
+                width={111}
+                height={114}
+                x={width / 4}
+                y={witchY}
+              />
+            </Group>
+            <Text
+              color={colors.secondary}
+              x={50}
+              y={100}
+              text={`Score:${score.toString()}`}
+              font={font}
+            ></Text>
+          </Canvas>
+        </GestureDetector>
+      </GestureHandlerRootView>
+      <CustomButton
+        text={"Return Home"}
+        onPress={onHomePressed}
+        type={"primary"}
+      />
+    </>
   );
 };
 export default GameScreen;
