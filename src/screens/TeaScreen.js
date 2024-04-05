@@ -7,7 +7,6 @@ import {
   useFont,
 } from "@shopify/react-native-skia";
 import { useWindowDimensions, View } from "react-native";
-import CustomButton from "../components/CustomButton.js";
 import {
   useSharedValue,
   withTiming,
@@ -17,10 +16,8 @@ import {
 } from "react-native-reanimated";
 
 import colors from "../config/colors.js";
-import { useNavigation } from "@react-navigation/native";
 
 const TeaScreen = () => {
-  const navigation = useNavigation();
   const { width, height } = useWindowDimensions();
   const font = useFont(
     require("../assets/fonts/american-typewriter-bold.ttf"),

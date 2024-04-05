@@ -4,7 +4,9 @@
 
 ## Description
 
-CottageWitch is a project that aims to provide a relaxing and simple game where a witch flies over lilypads to earn points.
+CottageWitch is a project that aims to provide a relaxing and simple app including a game where a witch flies over lilypads to earn points and a screen that shows magical tea brewing where you are supposed to take some deep breaths.
+
+This was created using React Native and Expo Go.
 
 ## Installation
 
@@ -37,7 +39,7 @@ The Custom Button and Custom Input were created as reusable components across th
 
 ### Assets
 
-This file contains all images used throughout the game. Most were AI generated with Canva or found for free online. It also contains the font I used throughout to give the app a uniform feeling.
+This file contains all images used throughout the game. Most were AI generated with Canva or found for free online. It also contains the american-typewriter font used throughout to give the app a uniform feeling.
 
 ### Config
 
@@ -47,13 +49,14 @@ The config file contains colors from my color scheme for easy reference and unif
 
 - Displays a background image and game elements (witch, lily pads) on a canvas.
 - Animates movement of game elements using React Native Reanimated and shared values.
-- The witch's y value starts mid screen and slowly increases to simulate witch flying downard until the user taps on the screen. The screen is wrapped in Gesture Handler from react-native-gesture-handler so anywhere on the screen can be tapped. When the screen is tapped, they icon is transformed (image rotated) to appear as though the witch is flying upwards and velocity changes so the witch moves upwards.
-- The lilypads both use a useEffect, withSequence, withTiming and withRepeact from react animated library. They start at different x and y positions and their x values are updated to go to the left off screen and restart from right off screen and repeat indefinitely.
+- The witch's y value starts mid screen and slowly increases to simulate witch flying downard until the user taps on the screen. The screen is wrapped in Gesture Handler from react-native-gesture-handler so anywhere on the screen can be tapped. When the screen is tapped, they icon is transformed (image rotated) to appear as though the witch is flying upwards and velocity changes so the witch moves upwards. When tapped again these actions both reverse. This is done by changing the witch's shared velocity value by a factor of negative 1.
+- The lilypads both use a useEffect, withSequence, withTiming and withRepeact from react animated library. They start at different x and y positions and their x values are updated to go to the left off screen and restart from right off screen. The zero in withRepeact function signifies repeating indefinitely.
 - the useAnimated Reaction hooks detect collisions between the witch and lily pads to update the score based on when the witch's y values overlap with the lilypads' y values and x values
+- Home screen button allows navigation back to home at bottom of screen using navigator
 
 ### Tea Screen:
 
-- Displays a stone cottage kitchen with petals falling into a pot and a cup of tea. Using similar functionality to the lilypads in the Game Screen. The tea petals are set to fall from the top of the screen to mid screen, hiding slightly behind a pot image and then restart from the beginning.
+- Displays a stone cottage kitchen with petals falling into a pot and a cup of tea. Using similar functionality to the lilypads in the Game Screen. The tea petals are set to fall from the top of the screen to mid screen, hiding slightly behind a pot image and then restart from the beginning with withTiming, withSequence and withRepeact from react animated library.
 
 ### Home Screen:
 
@@ -61,15 +64,15 @@ The config file contains colors from my color scheme for easy reference and unif
 
 ### Sign In Screen:
 
-- Dummy screen that can bring you to home page when you click Sign In, Forgot Password page that can also redirect you to home page, or Sign Up Screen using Custom Buttons and Custom Inputs.
+- Dummy screen that can bring you to home page when you click Sign In, Forgot Password page that can also redirect you to home page, or Sign Up Screen using Custom Buttons and Custom Inputs. Authentication is not set up so although the username and password values are set States there is console log statement and navigation no matter what username and password.
 
 ### Sign Up Screen:
 
-- Dummy screen that can bring you back to sign in screen
+- Dummy screen that can bring you back to sign in screen.
 
 ### Forgot Password Screen:
 
-- Navigation screen that can bring you to game
+- Navigation screen that can bring you to game.
 
 ## References
 
