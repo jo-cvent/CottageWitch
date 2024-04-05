@@ -15,6 +15,9 @@ export default function HomeScreen() {
   const onGather = () => {
     navigation.navigate("Game");
   };
+  const onTea = () => {
+    navigation.navigate("Tea");
+  };
   return (
     <View style={styles.container}>
       <ImageBackground source={bg} style={styles.background} />
@@ -24,8 +27,7 @@ export default function HomeScreen() {
           type={"tertiary"}
           onPress={onGather}
         />
-        <CustomButton text={"Brew Tea"} type={"tertiary"} />
-        <CustomButton text={"Charge Crystals"} type={"tertiary"} />
+        <CustomButton text={"Brew Tea"} type={"tertiary"} onPress={onTea} />
       </View>
     </View>
   );

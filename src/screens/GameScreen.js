@@ -7,7 +7,7 @@ import {
   Text,
   useFont,
 } from "@shopify/react-native-skia";
-import { useWindowDimensions, Platform } from "react-native";
+import { useWindowDimensions } from "react-native";
 import CustomButton from "../components/CustomButton.js";
 import {
   useSharedValue,
@@ -32,6 +32,7 @@ const GameScreen = () => {
   const navigation = useNavigation();
   const { width, height } = useWindowDimensions();
   const [score, setScore] = useState(0);
+  const [win, setWin] = useState(false);
   const font = useFont(
     require("../assets/fonts/american-typewriter-bold.ttf"),
     26
@@ -160,6 +161,15 @@ const GameScreen = () => {
               text={`Score:${score.toString()}`}
               font={font}
             ></Text>
+            {win && (
+              <Text
+                color={colors.secondary}
+                x={50}
+                y={100}
+                text={`You Win!!`}
+                font={font}
+              ></Text>
+            )}
           </Canvas>
         </GestureDetector>
       </GestureHandlerRootView>

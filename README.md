@@ -2,11 +2,11 @@
 
 ## Description
 
-CottageWitch is a project that aims to...
+CottageWitch is a project that aims to provide a relaxing and simple game where a witch flies over lilypads to earn points.
 
 ## Installation
 
-1. Clone the repository: `git clone https://github.com/your-username/CottageWitch.git`
+1. Clone the repository: `git clone https://github.com/jo-cvent/CottageWitch.git`
 2. Install the dependencies: `npm install`
 3. Make sure you have React Native and its dependencies set up in your development environment.
 4. Install the required libraries: `npm install @shopify/react-native-skia react-native-gesture-handler react-native-reanimated react-navigation`
@@ -25,14 +25,16 @@ CottageWitch is a project that aims to...
 
 - Game Screen:
   Displays a background image and game elements (witch, lily pads) on a canvas.
-  Handles user tap gestures to change the witch's vertical velocity.
-  Detects collisions between the witch and lily pads to update the score.
   Animates movement of game elements using React Native Reanimated.
-  Updates the score text dynamically based on gameplay.
+  Handles user tap gestures to change the witch's vertical velocity by reversing it multiplying it by -1.
+  Detects collisions between the witch and lily pads to update the score.
+- Home Screen: Description
 - Sign In Screen: Description
 - Sign Up Screen: Description
-- Home Screen: Description
 
 ## References
 
-I watched several YouTube videos to learn some React Native basics and animation including
+I followed along with three YouTube videos to learn some React Native basics and animation:
+React Native for Beginners with Mosh: https://www.youtube.com/watch?v=0-S5a0eXPoc
+Build Flappy Bird with React Native: Skia & Reanimated Tutorial: https://www.youtube.com/watch?v=9F4aICEisVI&t=7187s
+React Native Login Authentication Part 1: https://www.youtube.com/watch?v=ALnJLbjI7EY

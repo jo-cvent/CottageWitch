@@ -13,15 +13,20 @@ import colors from "../config/colors";
 export default function HomeScreen() {
   const bg = require("../assets/cottage.png");
   const navigation = useNavigation();
-  const onGather = () => {
-    navigation.navigate("Game");
+  const onHomePressed = () => {
+    navigation.navigate("Home");
   };
   return (
     <View style={styles.container}>
       <ImageBackground source={bg} style={styles.background} />
       <View style={styles.textContainer}>
         <Image source={require("../assets/witch.png")} style={styles.witch} />
-        <Text style={styles.text}>Witch I could help!</Text>
+        <Text style={styles.text}>That's okay!</Text>
+        <CustomButton
+          text={"Play on"}
+          onPress={onHomePressed}
+          type={"primary"}
+        />
       </View>
     </View>
   );

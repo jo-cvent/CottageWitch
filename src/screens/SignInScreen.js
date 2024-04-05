@@ -42,8 +42,7 @@ export default function SignInScreen() {
         />
         <CustomInput
           placeholder="password"
-          value={password}
-          setValue={setPassword}
+          onChangeText={(text) => setPassword(text)}
           secureTextEntry
         />
         <CustomButton
