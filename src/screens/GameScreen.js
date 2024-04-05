@@ -161,15 +161,6 @@ const GameScreen = () => {
               text={`Score:${score.toString()}`}
               font={font}
             ></Text>
-            {win && (
-              <Text
-                color={colors.secondary}
-                x={50}
-                y={100}
-                text={`You Win!!`}
-                font={font}
-              ></Text>
-            )}
           </Canvas>
         </GestureDetector>
       </GestureHandlerRootView>
