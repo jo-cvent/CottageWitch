@@ -25,20 +25,50 @@ CottageWitch is a project that aims to provide a relaxing and simple game where 
 5. Step 5: Click return home
 6. Step 6: Click brew tea, watch the animation and take deep breaths
 
-## Files
+## Files Explanation
 
-- Game Screen:
-  Displays a background image and game elements (witch, lily pads) on a canvas.
-  Animates movement of game elements using React Native Reanimated.
-  Handles user tap gestures to change the witch's vertical velocity by reversing it multiplying it by -1.
-  Detects collisions between the witch and lily pads to update the score.
-- Tea Screen:
-  Displays a stone cottage kitchen with petals falling into a pot and a cup of tea
-- Home Screen:
-  Allows navigation between Game and Brewing tea
-- Sign In Screen:
-  Dummy screen that can bring you to home page when you click Sign In, Forgot Password page that can also redirect you to home page, or Sign Up Screen
-- Sign Up Screen: Dummy screen that can bring you back to sign in screen
+### Navigation
+
+This sets up Navigation between the different screens and the screens can then import the navigator to reference each other
+
+### Components
+
+The Custom Button and Custom Input were created as reusable components across the Sign In/Sign Up/Home and Game Screens. The different styles of button allows differentation e.g. between Forgot Password and Sign In button on Sign in Screen.
+
+### Assets
+
+This file contains all images used throughout the game. Most were AI generated with Canva or found for free online. It also contains the font I used throughout to give the app a uniform feeling.
+
+### Config
+
+The config file contains colors from my color scheme for easy reference and uniformity, I imported on each of my screens.
+
+### Game Screen:
+
+Displays a background image and game elements (witch, lily pads) on a canvas.
+Animates movement of game elements using React Native Reanimated.
+Handles user tap gestures to change the witch's vertical velocity by reversing it multiplying it by -1.
+Detects collisions between the witch and lily pads to update the score.
+
+### Tea Screen:
+
+Displays a stone cottage kitchen with petals falling into a pot and a cup of tea
+
+### Home Screen:
+
+Allows navigation between Game and Brewing tea
+
+### Sign In Screen:
+
+Dummy screen that can bring you to home page when you click Sign In, Forgot Password page that can also redirect you to home page, or Sign Up Screen
+
+### Sign Up Screen:
+
+Dummy screen that can bring you back to sign in screen
+
+### Forgot Password Screen:
+
+Navigation screen that can bring you to game
 
 ## References
 
