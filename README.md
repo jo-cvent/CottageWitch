@@ -45,30 +45,31 @@ The config file contains colors from my color scheme for easy reference and unif
 
 ### Game Screen:
 
-Displays a background image and game elements (witch, lily pads) on a canvas.
-Animates movement of game elements using React Native Reanimated.
-Handles user tap gestures to change the witch's vertical velocity by reversing it multiplying it by -1.
-Detects collisions between the witch and lily pads to update the score.
+- Displays a background image and game elements (witch, lily pads) on a canvas.
+- Animates movement of game elements using React Native Reanimated and shared values.
+- The witch's y value starts mid screen and slowly increases to simulate witch flying downard until the user taps on the screen. The screen is wrapped in Gesture Handler from react-native-gesture-handler so anywhere on the screen can be tapped. When the screen is tapped, they icon is transformed (image rotated) to appear as though the witch is flying upwards and velocity changes so the witch moves upwards.
+- The lilypads both use a useEffect, withSequence, withTiming and withRepeact from react animated library. They start at different x and y positions and their x values are updated to go to the left off screen and restart from right off screen and repeat indefinitely.
+- the useAnimated Reaction hooks detect collisions between the witch and lily pads to update the score based on when the witch's y values overlap with the lilypads' y values and x values
 
 ### Tea Screen:
 
-Displays a stone cottage kitchen with petals falling into a pot and a cup of tea
+- Displays a stone cottage kitchen with petals falling into a pot and a cup of tea. Using similar functionality to the lilypads in the Game Screen. The tea petals are set to fall from the top of the screen to mid screen, hiding slightly behind a pot image and then restart from the beginning.
 
 ### Home Screen:
 
-Allows navigation between Game and Brewing tea
+- Allows navigation between Game and Brewing Tea using Custom Buttons.
 
 ### Sign In Screen:
 
-Dummy screen that can bring you to home page when you click Sign In, Forgot Password page that can also redirect you to home page, or Sign Up Screen
+- Dummy screen that can bring you to home page when you click Sign In, Forgot Password page that can also redirect you to home page, or Sign Up Screen using Custom Buttons and Custom Inputs.
 
 ### Sign Up Screen:
 
-Dummy screen that can bring you back to sign in screen
+- Dummy screen that can bring you back to sign in screen
 
 ### Forgot Password Screen:
 
-Navigation screen that can bring you to game
+- Navigation screen that can bring you to game
 
 ## References
 

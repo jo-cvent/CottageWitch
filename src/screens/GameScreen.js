@@ -32,7 +32,6 @@ const GameScreen = () => {
   const navigation = useNavigation();
   const { width, height } = useWindowDimensions();
   const [score, setScore] = useState(0);
-  const [win, setWin] = useState(false);
   const font = useFont(
     require("../assets/fonts/american-typewriter-bold.ttf"),
     26
